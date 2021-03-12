@@ -35,7 +35,7 @@ result.data.allDatoCmsProduct.nodes.forEach((node)=>{
     var price = node.price
     var quantity = node.quantity
     var images = node.images 
-    var slug = title.toLowerCase().replace(/ /g, '-') 
+    var slug = title.toLowerCase().trim().replace(/ /g, '-') 
     .replace(/[^\w-]+/g, '');
     // console.log(result.data.allDatoCmsProduct.nod) 
     createPage({
@@ -48,7 +48,7 @@ result.data.allDatoCmsProduct.nodes.forEach((node)=>{
             description : description,
             price : price ,
             quantity : quantity ,
-            images : images 
+            images : images ,
         }
     })
 })
