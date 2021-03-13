@@ -3,7 +3,6 @@ import { Link } from "gatsby"
 import { Card, CardImg } from "react-bootstrap"
 
 function ProductCard(props: { data: any }) {
-  console.log(props.data)
   const node = props.data
   var slug = node.productTitle
     .toLowerCase()
@@ -11,12 +10,12 @@ function ProductCard(props: { data: any }) {
     .replace(/ /g, "-")
     .replace(/[^\w-]+/g, "")
   return (
-    <div className="d-flex flex-row justify-content-center m-5">
+    <div  key={node.id} className="d-flex flex-row justify-content-center m-5">
       <Card className="p-3 bg-light border-0">
         <Card className="border-0" style={{ width: "18rem", marginTop: 30 }}>
           {" "}
           <div>
-            <div key={node.id}>
+            <div >
               <div>
                 <CardImg
                   className="m-auto"

@@ -1,6 +1,5 @@
 import React from "react"
 import Layout from "../components/Layout"
-import { useShoppingCart, formatCurrencyString } from "use-shopping-cart"
 function ProductPage(props) {
   const data = props.pageContext
   var slug = data.productTitle
@@ -10,30 +9,37 @@ function ProductPage(props) {
     .replace(/[^\w-]+/g, "")
   return (
     <Layout>
-      <div className="d-flex flex-column">
-        <div>
-          <h1 className="d-flex justify-content-center mt-2 ">{data.productTitle}</h1>
-          <img className="img-fluid p-5" src={data.images[0].url}/>
-          <div className="d-flex flex-row ">
-          {data.images.map(image => (
+      <div key={data.id} className="container-fluid">
+        <div className="row m-5">
+          <div className="col-md-6 ">
+            <img
+              className="img-fluid" style={{margin:20,width:"80%"}}
+              src={data.images[0].url}
+            />
+        
+          </div>
+          <div className="col-md-6">
             <div>
-              <img className="img-thumbnail border-0 p-4" src={image.url} />
+              <h1>{data.productTitle}</h1>
             </div>
-          ))}
-        </div>
-          <p className="p-4">{data.description}</p>
-        </div>
-        <div className="d-flex flex-column pl-4">
-          <div>
-            <h6 className="">In Stock : {data.quantity}</h6>
-          </div>
-          <div>
-            <h2>Price : {data.price} $</h2>
-          </div>
-        </div>
-
-     
-        <div className="d-flex flex-column justify-content-between p-4">
+            <div className="mt-5">
+              <p>{data.description}</p>
+            </div>
+            <div className="mt-5">
+              {" "}
+              <h6>In Stock : {data.quantity}</h6>
+            </div>
+            <div>
+              <h2>Price : {data.price} $</h2>
+            </div>
+            <div className="d-flex flex-row">
+              {data.images.map(image => (
+                <div className="" key={image.url}>
+                  <img className="img-thumbnail border-0 p-4" src={image.url} />
+                </div>
+              ))}
+            </div>
+            <div className="d-flex flex-column mt-5 mb-5">
           <button
             className="Product__buy Product snipcart-add-item btn btn-success btn-block"
             data-item-id={data.id}
@@ -55,6 +61,10 @@ function ProductPage(props) {
             Add to cart
           </button>
         </div>
+          </div>
+        </div>
+
+        
       </div>
     </Layout>
   )
