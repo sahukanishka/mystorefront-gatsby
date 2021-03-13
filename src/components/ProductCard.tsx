@@ -1,16 +1,27 @@
-import React from "react"
+import React , {FC} from "react"
 import { Link } from "gatsby"
 import { Card, CardImg } from "react-bootstrap"
 
-function ProductCard(props: { data: any }) {
+
+type IFileNode = {
+  id : string ,
+  productTitle : string ,
+  images : ArrayBuffer , 
+  description : string,
+  price : number , 
+  quantity : number 
+  }
+ 
+function ProductCard(props : {data : IFileNode}){
   const node = props.data
   var slug = node.productTitle
     .toLowerCase()
     .trim()
     .replace(/ /g, "-")
     .replace(/[^\w-]+/g, "")
+
   return (
-    <div  key={node.id} className="d-flex flex-row justify-content-center m-5">
+    <div  key={node.id} className="m-2">
       <Card className="p-3 bg-light border-0">
         <Card className="border-0" style={{ width: "18rem", marginTop: 30 }}>
           {" "}

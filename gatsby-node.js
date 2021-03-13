@@ -52,7 +52,28 @@ result.data.allDatoCmsProduct.nodes.forEach((node)=>{
         }
     })
 })
-   
+
+
+const postsPerPage =  2
+const posts = result.data.allDatoCmsProduct.nodes
+const numofPages = Math.ceil(posts.length /postsPerPage)
+var newArray = Array.from({length : numofPages})
+var j = 0;
+for(var i = 0; i<= newArray.length ; i ++){
+  var postData = posts.slice(j,(i+1)*postsPerPage)
+  console.log(postData)
+  console.log("********")
+  j = j+2;
+  createPage({
+    path : `/${i+1}`,
+    component: require.resolve("./src/templates/productsCatalog.tsx"),
+    context : {
+      data : postData , 
+      numofPages : numofPages , 
+      currentPage : i+1,
+    },
+  })
+}
 }
 
 

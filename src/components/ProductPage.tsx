@@ -1,11 +1,24 @@
 import React from "react"
 import Layout from "../components/Layout"
-function ProductPage(props) {
+
+type IFileNode = {
+id : string ,
+productTitle : string ,
+images : ArrayBuffer , 
+description : string,
+price : number , 
+quantity : number 
+}
+type IMyFiles = {
+  results : { edges: { node: IFileNode }[] }
+}
+type IProductPageProps =  {data : IMyFiles; pageContext: any }
+function ProductPage(props :IProductPageProps) {
   const data = props.pageContext
   var slug = data.productTitle
     .toLowerCase()
     .trim()
-    .replace(/ /g, "-")
+    .replace(/ /g, "-") 
     .replace(/[^\w-]+/g, "")
   return (
     <Layout>
@@ -13,10 +26,10 @@ function ProductPage(props) {
         <div className="row m-5">
           <div className="col-md-6 ">
             <img
-              className="img-fluid" style={{margin:20,width:"80%"}}
+              className="img-fluid"
+              style={{ margin: 20, width: "80%" }}
               src={data.images[0].url}
             />
-        
           </div>
           <div className="col-md-6">
             <div>
@@ -40,31 +53,29 @@ function ProductPage(props) {
               ))}
             </div>
             <div className="d-flex flex-column mt-5 mb-5">
-          <button
-            className="Product__buy Product snipcart-add-item btn btn-success btn-block"
-            data-item-id={data.id}
-            data-item-price={data.price}
-            data-item-url={slug}
-            data-item-image={data.images[0].url}
-            data-item-name={data.productTitle}
-          >
-            BuyNow
-          </button>
-          <button
-            className="Product__buy Product snipcart-add-item btn btn-outline-secondary btn-block"
-            data-item-id={data.id}
-            data-item-price={data.price}
-            data-item-url={slug}
-            data-item-image={data.images[0].url}
-            data-item-name={data.productTitle}
-          >
-            Add to cart
-          </button>
-        </div>
+              <button
+                className="snipcart-add-item btn btn-success btn-block"
+                data-item-id={data.id}
+                data-item-price={data.price}
+                data-item-url={slug}
+                data-item-image={data.images[0].url}
+                data-item-name={data.productTitle}
+              >
+                BuyNow
+              </button>
+              <button
+                className="snipcart-add-item btn btn-outline-secondary btn-block"
+                data-item-id={data.id}
+                data-item-price={data.price}
+                data-item-url={slug}
+                data-item-image={data.images[0].url}
+                data-item-name={data.productTitle}
+              >
+                Add to cart
+              </button>
+            </div>
           </div>
         </div>
-
-        
       </div>
     </Layout>
   )
