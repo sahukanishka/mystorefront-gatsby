@@ -1,9 +1,9 @@
-import React from "react"
-import {graphql, Link} from "gatsby"
+import React from "react" ; 
+import {graphql, Link} from "gatsby" ; 
 import Product from '../components/ProductPage';
-import Header from "../components/Header"
-import ProductCard from "../components/ProductCard"
-import ProductCatalog from "../templates/productsCatalog"
+import Header from "../components/Header" ; 
+import ProductCard from "../components/ProductCard" ; 
+import ProductCatalog from "../templates/productsCatalog" ;
 
 
 function Home(props) {

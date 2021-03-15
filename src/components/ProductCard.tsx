@@ -1,6 +1,6 @@
-import React , {FC} from "react"
-import { Link } from "gatsby"
-import { Card, CardImg } from "react-bootstrap"
+import React , {FC} from "react" ; 
+import  { Link } from "gatsby" ; 
+import { Card, CardImg } from "react-bootstrap" ; 
 
 
 type IFileNode = {

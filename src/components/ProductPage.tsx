@@ -2,23 +2,23 @@ import React from "react"
 import Layout from "../components/Layout"
 
 type IFileNode = {
-id : string ,
-productTitle : string ,
-images : ArrayBuffer , 
-description : string,
-price : number , 
-quantity : number 
+  id: string
+  productTitle: string
+  images: ArrayBuffer
+  description: string
+  price: number
+  quantity: number
 }
 type IMyFiles = {
-  results : { edges: { node: IFileNode }[] }
+  results: { edges: { node: IFileNode }[] }
 }
-type IProductPageProps =  {data : IMyFiles; pageContext: any }
-function ProductPage(props :IProductPageProps) {
+type IProductPageProps = { data: IMyFiles; pageContext: any }
+function ProductPage(props: IProductPageProps) {
   const data = props.pageContext
   var slug = data.productTitle
     .toLowerCase()
     .trim()
-    .replace(/ /g, "-") 
+    .replace(/ /g, "-")
     .replace(/[^\w-]+/g, "")
   return (
     <Layout>
