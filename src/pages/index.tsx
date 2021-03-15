@@ -6,7 +6,20 @@ import ProductCard from "../components/ProductCard" ;
 import ProductCatalog from "../templates/productsCatalog" ;
 
 
-function Home(props) {
+type IDataNode = {
+  id : string ,
+  productTitle : string ,
+  images : ArrayBuffer , 
+  description : string,
+  price : number , 
+  quantity : number 
+  }
+
+type IProductCardData  = {
+  data: { allDatoCmsProduct : {nodes :  [IDataNode]    } } }
+
+
+function Home(props : IProductCardData ) {
   console.log(props)
   const {data} = props
   const productCardData = data.allDatoCmsProduct
@@ -41,7 +54,7 @@ function Home(props) {
   </div>
 }
 
-export default Home;
+
 
 export const ProductCataloge = graphql`
 query MyQuery {
@@ -58,4 +71,4 @@ query MyQuery {
 }
 
 `
-
+export default Home;

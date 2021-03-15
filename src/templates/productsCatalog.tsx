@@ -2,6 +2,7 @@ import React from "react"
 import Layout from "../components/Layout"
 import ProductCard from "../components/ProductCard"
 import Pagination from "../components/Pagination"
+
 type IFileNode = {
     id : string ,
     productTitle : string ,
@@ -10,12 +11,10 @@ type IFileNode = {
     price : number , 
     quantity : number 
     }
-type IProductCatalog = {
-    data: {data : IFileNode ,  pageContext : any}
-};
-function ProductCataloge(props : {data : IProductCatalog}) {
+
+function ProductCataloge(props :  {data : IFileNode ,  pageContext : any}) {
   const { data } = props.pageContext
-  console.log(props.pageContext)
+  // console.log(props.pageContext)
 
   return (
     <Layout>
