@@ -4,16 +4,16 @@ import Layout from "../components/Layout"
 type IFileNode = {
   id: string
   productTitle: string
-  images: ArrayBuffer
+  images: {url: string} []
   description: string
   price: number
   quantity: number
 }
-type IMyFiles = {
-  results: { edges: { node: IFileNode }[] }
-}
-type IProductPageProps = { data: IMyFiles; pageContext: any }
+
+
+type IProductPageProps = { pageContext: IFileNode }
 function ProductPage(props: IProductPageProps) {
+  console.log(props)
   const data = props.pageContext
   var slug = data.productTitle
     .toLowerCase()

@@ -1,8 +1,10 @@
 import React, { Component } from "react"
 import Header from "../components/Header"
 // import Helmet from "react-helmet"
-
-function Layout({ children }: any) {
+type IChildren = {
+  children : React.ReactNode
+}
+function Layout( props : IChildren ) {
   return (
     <div
       style={{
@@ -10,7 +12,7 @@ function Layout({ children }: any) {
       }}
     >
       <Header />
-      {children}
+      {props.children}
     </div>
   )
 }
